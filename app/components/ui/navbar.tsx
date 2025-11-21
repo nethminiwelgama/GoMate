@@ -1,37 +1,41 @@
-import { Link, router } from 'expo-router';
+import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { ThemedText } from '../themed-text';
-import { ThemedView } from '../themed-view';
+import { ThemedText } from '../themed/themed-text';
+import { ThemedView } from '../themed/themed-view';
 
 export default function Navbar() {
   return (
     <ThemedView style={styles.container}>
-      <Link href={'/' as any} asChild>
+      <Link href="/" asChild>
         <TouchableOpacity style={styles.link}>
           <ThemedText type="defaultSemiBold">Home</ThemedText>
         </TouchableOpacity>
       </Link>
 
-      <Link href={'/about' as any} asChild>
+      <Link href="/about" asChild>
         <TouchableOpacity style={styles.link}>
           <ThemedText type="defaultSemiBold">About</ThemedText>
         </TouchableOpacity>
       </Link>
 
-      <Link href={'/contact' as any} asChild>
+      <Link href="/contact" asChild>
         <TouchableOpacity style={styles.link}>
           <ThemedText type="defaultSemiBold">Contact</ThemedText>
         </TouchableOpacity>
       </Link>
 
-      <TouchableOpacity style={styles.link} onPress={() => router.push('/favourites' as any)}>
-        <ThemedText type="defaultSemiBold">Favourites</ThemedText>
-      </TouchableOpacity>
+      <Link href="/favourites" asChild>
+        <TouchableOpacity style={styles.link}>
+          <ThemedText type="defaultSemiBold">Favourites</ThemedText>
+        </TouchableOpacity>
+      </Link>
 
-      <TouchableOpacity style={styles.menu} onPress={() => router.push('/profile' as any)}>
-        <ThemedText>Menu</ThemedText>
-      </TouchableOpacity>
+      <Link href="/profile" asChild>
+        <TouchableOpacity style={styles.menu}>
+          <ThemedText type="defaultSemiBold">Profile</ThemedText>
+        </TouchableOpacity>
+      </Link>
     </ThemedView>
   );
 }
@@ -45,9 +49,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0,0,0,0.06)',
-    elevation: 3,
-    zIndex: 50,
-    backgroundColor: 'transparent',
   },
   link: {
     paddingVertical: 8,
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
   },
   menu: {
     paddingVertical: 8,
-    paddingHorizontal: 10,
-    backgroundColor: 'rgba(10,126,164,0.06)',
+    paddingHorizontal: 12,
+    backgroundColor: 'rgba(10,126,164,0.1)',
     borderRadius: 6,
   },
 });

@@ -1,8 +1,17 @@
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type SampleState = { value: string };
+type SampleState = { 
+  value: string;
+  user: {
+    name: string;
+    email: string;
+  } | null;
+};
 
-const initialState: SampleState = { value: 'hello' };
+const initialState: SampleState = { 
+  value: 'hello',
+  user: null
+};
 
 const sampleSlice = createSlice({
   name: 'sample',
@@ -11,10 +20,13 @@ const sampleSlice = createSlice({
     setValue(state, action: PayloadAction<string>) {
       state.value = action.payload;
     },
+    setUser(state, action: PayloadAction<{ name: string; email: string } | null>) {
+      state.user = action.payload;
+    },
   },
 });
 
-export const { setValue } = sampleSlice.actions;
+export const { setValue, setUser } = sampleSlice.actions;
 
 export const store = configureStore({
   reducer: {

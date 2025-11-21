@@ -1,15 +1,28 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { ThemedText } from '../components/themed-text';
-import { ThemedView } from '../components/themed-view';
+import { ThemedText } from './components/themed/themed-text';
+import { ThemedView } from './components/themed/themed-view';
 
 export default function Profile() {
   return (
     <ThemedView style={styles.container}>
       <ThemedText type="title">Profile</ThemedText>
-      <ThemedText>Manage your account settings here.</ThemedText>
+      <ThemedText style={styles.text}>
+        Manage your account settings here.
+      </ThemedText>
     </ThemedView>
   );
 }
 
-const styles = StyleSheet.create({ container: { padding: 20, flex: 1 } });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  text: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+});
